@@ -8,6 +8,7 @@ import NewsletterSection from "./NewsletterSection";
 import Footer from "./Footer";
 import FlashSaleSection from "./FlashSaleSection";
 import VoucherSection from "./VoucherSection";
+import JustForYouSection from "./JustForYouSection";
 
 const LandingPage = () => {
   return (
@@ -16,6 +17,7 @@ const LandingPage = () => {
       <CategorySection />
       <FlashSaleSection />
       <ProductSlider />
+      <JustForYouSection />
       <FeaturedSection />
       <TestimonialsSection />
       <VoucherSection />

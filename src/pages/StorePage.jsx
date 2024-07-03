@@ -1,5 +1,12 @@
 import React from "react";
 import ProductCard from "../components/ProductCard";
+import verified from "../assets/verified.png";
+import official from "../assets/official-store.png";
+import bronze from "../assets/bronze.png";
+import gold from "../assets/gold.png";
+import diamond from "../assets/diamond.png";
+import battle from "../assets/battle.png";
+import king from "../assets/king.png";
 
 const StorePage = () => {
   // Placeholder data (replace with real data)
@@ -57,28 +64,21 @@ const StorePage = () => {
               <p className="text-gray-600">Owner: {storeOwner}</p>
             </div>
             <div className="flex space-x-2">
-              <span className="px-2 py-1 bg-green-200 text-green-800 rounded-full">
-                Verified Badge
-              </span>
-              <span className="px-2 py-1 bg-blue-200 text-blue-800 rounded-full">
-                Official Badge
-              </span>
-              {/* Add more badges as needed */}
+              {/* Verified and Official Badges */}
+              <img src={verified} alt="Verified Badge" className="w-8 h-8" />
+              <img src={official} alt="Official Badge" className="w-8 h-8" />
+              {/* Add more badges/icons as needed */}
             </div>
           </div>
           <p className="mt-4 text-gray-700">{storeDescription}</p>
-          {/* Badges */}
+          {/* Levels */}
           <div className="mt-4 flex space-x-2">
-            <span className="px-2 py-1 bg-yellow-200 text-yellow-800 rounded-full">
-              Level 1
-            </span>
-            <span className="px-2 py-1 bg-yellow-200 text-yellow-800 rounded-full">
-              Level 2
-            </span>
-            <span className="px-2 py-1 bg-yellow-200 text-yellow-800 rounded-full">
-              Level 3
-            </span>
-            {/* Add more levels as needed */}
+            <img src={bronze} alt="Level 1" className="w-8 h-8" />
+            <img src={gold} alt="Level 2" className="w-8 h-8" />
+            <img src={diamond} alt="Level 3" className="w-8 h-8" />
+            <img src={battle} alt="Level 4" className="w-8 h-8" />
+            <img src={king} alt="Level 5" className="w-8 h-8" />
+            {/* Adjust icons and URLs based on your actual icons/images */}
           </div>
         </div>
         {/* Top Products Section */}

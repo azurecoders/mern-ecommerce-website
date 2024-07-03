@@ -103,20 +103,20 @@ const FlashSaleSection = () => {
         <h2 className="text-3xl font-bold text-center mb-8">Flash Sale</h2>
         <div className="text-center mb-8">
           {timeLeft.days !== undefined ? (
-            <div className="text-2xl font-semibold flex justify-center space-x-4">
-              <div className="bg-white rounded-md p-2">
+            <div className="text-2xl font-semibold flex justify-center space-x-2 sm:space-x-4 flex-wrap">
+              <div className="bg-white rounded-md p-2 m-1 sm:m-0 w-20">
                 <div className="text-center font-bold">{timeLeft.days}</div>
                 <div className="text-center">Days</div>
               </div>
-              <div className="bg-white rounded-md p-2">
+              <div className="bg-white rounded-md p-2 m-1 sm:m-0 w-20">
                 <div className="text-center font-bold">{timeLeft.hours}</div>
                 <div className="text-center">Hours</div>
               </div>
-              <div className="bg-white rounded-md p-2">
+              <div className="bg-white rounded-md p-2 m-1 sm:m-0 w-20">
                 <div className="text-center font-bold">{timeLeft.minutes}</div>
                 <div className="text-center">Minutes</div>
               </div>
-              <div className="bg-white rounded-md p-2">
+              <div className="bg-white rounded-md p-2 m-1 sm:m-0 w-20">
                 <div className="text-center font-bold">{timeLeft.seconds}</div>
                 <div className="text-center">Seconds</div>
               </div>

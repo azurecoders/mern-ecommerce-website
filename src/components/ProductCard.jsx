@@ -2,7 +2,7 @@ import React from "react";
 
 const ProductCard = ({ name, description, price, imageUrl }) => {
   return (
-    <div className="bg-white shadow-lg rounded-lg overflow-hidden transform transition duration-500 max-w-xs mx-auto">
+    <div className="bg-white shadow-lg rounded-lg overflow-hidden transform transition duration-500 max-w-[16rem] mx-auto">
       <div className="relative">
         <img src={imageUrl} alt={name} className="w-full h-48 object-cover" />
         <div className="absolute top-2 right-2">

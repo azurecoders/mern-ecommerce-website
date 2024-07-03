@@ -1,34 +1,25 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faTv,
+  faTshirt,
+  faHome,
+  faFootballBall,
+  faPuzzlePiece,
+  faBook,
+  faHeartbeat,
+  faCar,
+} from "@fortawesome/free-solid-svg-icons";
 
 const categories = [
-  {
-    id: 1,
-    name: "Electronics",
-    imageUrl: "https://picsum.photos/200/200?random=6",
-  },
-  {
-    id: 2,
-    name: "Fashion",
-    imageUrl: "https://picsum.photos/200/200?random=7",
-  },
-  {
-    id: 3,
-    name: "Home & Garden",
-    imageUrl: "https://picsum.photos/200/200?random=8",
-  },
-  { id: 4, name: "Sports", imageUrl: "https://picsum.photos/200/200?random=9" },
-  { id: 5, name: "Toys", imageUrl: "https://picsum.photos/200/200?random=10" },
-  { id: 6, name: "Books", imageUrl: "https://picsum.photos/200/200?random=11" },
-  {
-    id: 7,
-    name: "Health & Beauty",
-    imageUrl: "https://picsum.photos/200/200?random=12",
-  },
-  {
-    id: 8,
-    name: "Automotive",
-    imageUrl: "https://picsum.photos/200/200?random=13",
-  },
+  { id: 1, name: "Electronics", icon: faTv },
+  { id: 2, name: "Fashion", icon: faTshirt },
+  { id: 3, name: "Home & Garden", icon: faHome },
+  { id: 4, name: "Sports", icon: faFootballBall },
+  { id: 5, name: "Toys", icon: faPuzzlePiece },
+  { id: 6, name: "Books", icon: faBook },
+  { id: 7, name: "Health & Beauty", icon: faHeartbeat },
+  { id: 8, name: "Automotive", icon: faCar },
 ];
 
 const CategorySection = () => {
@@ -38,17 +29,15 @@ const CategorySection = () => {
         <h2 className="text-3xl font-bold text-center mb-8">
           Shop by Category
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-4 gap-6">
           {categories.map((category) => (
             <div
               key={category.id}
-              className="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition duration-300"
+              className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300 flex flex-col items-center"
             >
-              <img
-                src={category.imageUrl}
-                alt={category.name}
-                className="w-full h-32 object-cover mb-4 rounded-lg"
-              />
+              <div className="text-4xl mb-4 text-blue-500">
+                <FontAwesomeIcon icon={category.icon} />
+              </div>
               <h3 className="text-lg font-semibold text-center">
                 {category.name}
               </h3>

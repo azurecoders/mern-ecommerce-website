@@ -55,9 +55,9 @@ const ProductDisplayPage = () => {
   const [view, setView] = useState("grid");
   const [sort, setSort] = useState("price-asc");
   const [filters, setFilters] = useState({
-    rating: null,
-    color: null,
-    size: null,
+    rating: [],
+    color: [],
+    size: [],
     priceRange: [0, 600],
   });
   const [showSidebar, setShowSidebar] = useState(false);
@@ -81,10 +81,20 @@ const ProductDisplayPage = () => {
   };
 
   const handleFilterChange = (filterType, value) => {
-    setFilters((prevFilters) => ({
-      ...prevFilters,
-      [filterType]: prevFilters[filterType] === value ? null : value,
-    }));
+    setFilters((prevFilters) => {
+      const currentValues = prevFilters[filterType];
+      if (currentValues.includes(value)) {
+        return {
+          ...prevFilters,
+          [filterType]: currentValues.filter((item) => item !== value),
+        };
+      } else {
+        return {
+          ...prevFilters,
+          [filterType]: [...currentValues, value],
+        };
+      }
+    });
   };
 
   const handlePriceRangeChange = (e) => {
@@ -97,9 +107,9 @@ const ProductDisplayPage = () => {
 
   const clearFilters = () => {
     setFilters({
-      rating: null,
-      color: null,
-      size: null,
+      rating: [],
+      color: [],
+      size: [],
       priceRange: [0, 600],
     });
   };
@@ -110,10 +120,18 @@ const ProductDisplayPage = () => {
 
   const filteredProducts = sampleProducts
     .filter((product) => {
-      if (filters.rating && product.rating < filters.rating) return false;
-      if (filters.color && !product.colors.includes(filters.color))
+      if (filters.rating.length > 0 && !filters.rating.includes(product.rating))
         return false;
-      if (filters.size && !product.sizes.includes(filters.size)) return false;
+      if (
+        filters.color.length > 0 &&
+        !filters.color.some((color) => product.colors.includes(color))
+      )
+        return false;
+      if (
+        filters.size.length > 0 &&
+        !filters.size.some((size) => product.sizes.includes(size))
+      )
+        return false;
       if (
         product.price < filters.priceRange[0] ||
         product.price > filters.priceRange[1]
@@ -178,11 +196,11 @@ const ProductDisplayPage = () => {
               {[5, 4, 3, 2, 1].map((rating) => (
                 <div key={rating} className="mb-1 flex items-center">
                   <input
-                    type="radio"
+                    type="checkbox"
                     id={`rating-${rating}`}
                     name="rating"
                     value={rating}
-                    checked={filters.rating === rating}
+                    checked={filters.rating.includes(rating)}
                     onChange={() => handleFilterChange("rating", rating)}
                     className="mr-2"
                   />
@@ -208,11 +226,11 @@ const ProductDisplayPage = () => {
               {["Black", "White", "Red", "Silver", "Gold"].map((color) => (
                 <div key={color} className="mb-1 flex items-center">
                   <input
-                    type="radio"
+                    type="checkbox"
                     id={`color-${color}`}
                     name="color"
                     value={color}
-                    checked={filters.color === color}
+                    checked={filters.color.includes(color)}
                     onChange={() => handleFilterChange("color", color)}
                     className="mr-2"
                   />
@@ -225,11 +243,11 @@ const ProductDisplayPage = () => {
               {["S", "M", "L", "XL"].map((size) => (
                 <div key={size} className="mb-1 flex items-center">
                   <input
-                    type="radio"
+                    type="checkbox"
                     id={`size-${size}`}
                     name="size"
                     value={size}
-                    checked={filters.size === size}
+                    checked={filters.size.includes(size)}
                     onChange={() => handleFilterChange("size", size)}
                     className="mr-2"
                   />
